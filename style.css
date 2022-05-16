@@ -2,4 +2,102 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  /* min-width: 300px; */
+}
+/*? font-family: 'Comfortaa', cursive; */
+/* ?font-family: 'Josefin Sans', sans-serif; */
+/* ?font-family: 'Roboto Flex', sans-serif;   */
+body {
+  background-color: white;
+}
+#logo {
+  position: fixed;
+  max-width: 12rem;
+  min-width: 11rem;
+  width: clamp(12rem, 2.5vw, 15rem);
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 1rem;
+  width: 40%;
+}
+
+#button-container {
+  display: flex;
+  justify-content: right;
+  align-content: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.button {
+  border-radius: 20px;
+  z-index: 99;
+  color: black;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  text-decoration: none;
+  /* padding: clamp(1rem, 5vw, 2rem); */
+  padding: 1rem;
+  margin: 0.2rem;
+  transition: background-color 200ms 300ms;
+
+  /* text-transform: uppercase; */
+  /* transition: transform 0.2s, box-shadow 0.2s; */
+}
+.button:hover {
+  /* transition: background-color 10ms 20ms; */
+  background-color: rgb(158, 209, 133);
+  /* box-shadow: 0 20px 100px 1px rgba(255, 255, 255, 0.4); */
+  transition: transform 100ms 100ms;
+  transform: translateY(4px);
+}
+@media only screen and (max-width: 460px) {
+  #button-container {
+    flex-direction: column;
+    float: right;
+    margin-right: 2rem;
+  }
+  .icon-container {
+    /* ! top: 30rem; */
+  }
+}
+
+.background-photo {
+  z-index: 0;
+  max-width: 650px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+}
+
+.icon-container {
+  display: flex;
+  position: relative;
+  margin: 2rem;
+  top: 20rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 2 2 3rem;
+  gap: 1rem;
+}
+.icon {
+  width: clamp(2.3rem, 5vw, 3.5rem);
+}
+#footer {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: clamp(0.5rem, 2.5vw, 1rem);
+  z-index: 1;
+  text-align: center;
+  max-width: 15rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0.5rem;
+  width: 30vw;
 }
