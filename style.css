@@ -12,15 +12,22 @@ body {
   background-color: white;
 }
 #logo {
+  z-index: 99;
+  border-radius: 15rem;
   position: fixed;
-  max-width: 12rem;
-  min-width: 8rem;
-  width: clamp(12rem, 2.5vw, 15rem);
+  max-width: 15rem;
+  min-width: 9rem;
+  /* width: clamp(12rem, 2.5vw, 15rem); */
+  width: clamp(12rem, 9.75rem + 10vw, 15rem);
   left: 0;
   top: 0;
   margin: 0;
   padding: 1rem;
   width: 40%;
+  /* width: 50%; */
+}
+#logo:hover {
+  background-color: aquamarine;
 }
 
 #button-container {
@@ -72,6 +79,11 @@ body {
   padding: 0;
   width: 80%;
 }
+.background-photo,
+projects {
+  max-width: unset; /*!*/
+  /* width: 100%; */
+}
 
 .icon-container {
   display: flex;
@@ -88,6 +100,10 @@ body {
 }
 .icon {
   width: clamp(2.3rem, 5vw, 3.5rem);
+  border-radius: 2rem;
+}
+.icon:hover {
+  background-color: rgb(181, 223, 170);
 }
 
 /* !For landscape phone */
@@ -100,15 +116,31 @@ body {
   }
   .icon-container {
     flex-direction: row;
+    bottom: 1.5rem;
   }
   .icon {
     width: clamp(2rem, 4vw, 3rem);
   }
 }
-
+#middle-text {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  /* font-size: clamp(2rem, 0.8148rem + 5.9259vw, 6rem); */
+  font-size: clamp(2rem, 0.5rem + 6.6667vw, 4rem);
+  /* position: relative; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -20%);
+  margin: 0;
+  /* padding: 1rem; */
+  background-color: rgb(255, 255, 255, 0.5);
+  /* background-color: white; */
+}
 #footer {
   font-family: "Josefin Sans", sans-serif;
-  font-size: clamp(0.2rem, 2.2vw, 0.8rem);
+  /* font-size: clamp(0.2rem, 2.2vw, 0.8rem); */
+  font-size: clamp(0.5rem, 0.125rem + 1.6667vw, 1rem);
   z-index: 1;
   text-align: center;
   max-width: 15rem;
