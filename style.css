@@ -14,7 +14,7 @@ body {
 #logo {
   position: fixed;
   max-width: 12rem;
-  min-width: 11rem;
+  min-width: 10rem;
   width: clamp(12rem, 2.5vw, 15rem);
   left: 0;
   top: 0;
@@ -88,13 +88,19 @@ body {
   width: clamp(2.3rem, 5vw, 3.5rem);
 }
 
-/* For landscape phone */
+/* !For landscape phone */
 @media only screen and (max-height: 620px) {
+  #logo {
+    /* width: 4rem; */
+  }
+  #button-container {
+    margin-right: 15rem;
+  }
   .icon-container {
-    /* flex-wrap: wrap; */
+    flex-direction: row;
   }
   .icon {
-    width: 2.5rem;
+    width: clamp(2rem, 4vw, 3rem);
   }
 }
 
