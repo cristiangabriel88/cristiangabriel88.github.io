@@ -74,7 +74,7 @@ body {
     margin-right: 2rem;
   }
   .about-container {
-    margin-top: 5vh;
+    margin-top: 7vh;
   }
 }
 /* *****Background Photos******************** */
@@ -95,26 +95,26 @@ projects {
 }
 .background-photo-about {
   z-index: 0;
-  max-width: 650px;
+  max-width: 600px;
   position: fixed;
   right: 0;
   bottom: 0;
   margin: 0;
   padding: 0;
-  width: 80%;
+  width: 44%;
 }
-.background-photo,
-.contact {
-  background-image: url("/resources/images/contact.jpg");
-  background-size: 70rem;
-  background-repeat: no-repeat;
+.background-photo-contact {
+  /* background-image: url("/resources/images/contact.jpg"); */
+  /* background-size: 70rem; */
+  /* background-repeat: no-repeat; */
   /* max-width: 90vw; */
   z-index: auto;
   right: unset;
   bottom: unset;
   /* width: 100rem; */
 }
-/* ***************************************** */
+/* *Background Photos END*********************************** */
+
 /* Icon Container */
 .icon-container {
   display: flex;
@@ -157,14 +157,23 @@ projects {
 .about-container {
   z-index: 99;
   font-family: "Comfortaa", cursive;
-  font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2rem;
+  /* font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem); */
+  font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 40vw;
-  left: 15vw;
+  max-width: 45vw;
+  line-height: clamp(1.2rem, 0.867rem + 1.5671vw, 2.2rem);
+  left: 10vw;
+  margin-left: 3rem;
   top: 10rem;
+}
+.dev-icons {
+  font-family: "devicons";
+  font-size: clamp(1rem, 0.3585rem + 3.0189vw, 3rem);
 }
 
 #middle-text {
