@@ -80,7 +80,7 @@ body {
 /* *****Background Photos******************** */
 .background-photo {
   z-index: 0;
-  max-width: 650px;
+  max-width: 800px;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -88,11 +88,7 @@ body {
   padding: 0;
   width: 80%;
 }
-.background-photo,
-projects {
-  max-width: unset; /*!*/
-  /* width: 100%; */
-}
+
 .background-photo-about {
   z-index: 0;
   max-width: 600px;
@@ -104,14 +100,9 @@ projects {
   width: 44%;
 }
 .background-photo-contact {
-  /* background-image: url("/resources/images/contact.jpg"); */
-  /* background-size: 70rem; */
-  /* background-repeat: no-repeat; */
-  /* max-width: 90vw; */
   z-index: auto;
   right: unset;
   bottom: unset;
-  /* width: 100rem; */
 }
 /* *Background Photos END*********************************** */
 
