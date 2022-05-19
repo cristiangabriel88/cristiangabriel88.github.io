@@ -24,13 +24,13 @@ body {
   width: clamp(12rem, 9.75rem + 10vw, 15rem);
   left: 0;
   top: 0;
-  margin: 0;
-  padding: 1rem;
+  /* padding: 1rem; */
+  margin: 1rem;
   width: 40%;
   /* width: 50%; */
 }
 #logo:hover {
-  background-color: antiquewhite;
+  background-color: rgb(122, 170, 113);
 }
 
 #button-container {
@@ -99,6 +99,16 @@ body {
   padding: 0;
   width: 44%;
 }
+.background-photo-projects {
+  z-index: 0;
+  max-width: 1500px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  /* width: 100%; */
+}
 .background-photo-contact {
   z-index: auto;
   right: unset;
@@ -148,7 +158,7 @@ body {
 .about-container {
   z-index: 99;
   font-family: "Comfortaa", cursive;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 2rem;
   /* font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem); */
   font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
@@ -182,6 +192,34 @@ body {
   background-color: rgb(255, 255, 255, 0.5);
   /* background-color: white; */
 }
+/* ******Projects Page************************* */
+.projects {
+  font-family: "Comfortaa", cursive;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  /* font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem); */
+  font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+  position: relative;
+  max-width: 45vw;
+  left: 10vw;
+  margin-left: 3rem;
+  top: 10rem;
+  border: 1px solid green;
+}
+.project-container {
+  display: grid;
+  grid-template: 20vw 20vw / 20vw 20vw;
+  /* grid-template: 2fr 2fr / 2fr 2fr; */
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  /* justify-self: stretch; */
+  grid-auto-flow: row;
+}
+.project-container img {
+  max-width: 20vw;
+}
+/* ******END Projects Page********************* */
 #footer {
   font-family: "Josefin Sans", sans-serif;
   /* font-size: clamp(0.2rem, 2.2vw, 0.8rem); */
@@ -195,6 +233,8 @@ body {
   margin: 0;
   padding: 0.5rem;
   width: 30vw;
+  background-color: white;
+  border-radius: 2rem;
 }
 
 /** Fade Ideas  ############################################# */
