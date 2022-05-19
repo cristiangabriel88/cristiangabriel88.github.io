@@ -19,7 +19,7 @@
   <body class="animate-in contact">
     <header id="navbar">
       <a href="index.html"
-        ><img src="/resources/images/logo1.png" alt="Logo" id="logo"
+        ><img src="/resources/images/logo2.png" alt="Logo" id="logo"
       /></a>
       <div id="button-container">
         <a href="about.html" class="button">About</a>
@@ -29,9 +29,9 @@
       </div>
     </header>
     <img
-      src="/resources/images/contact.jpg"
+      src="/resources/images/contact-reversed.jpg"
       alt="Background image"
-      class="background-photo contact"
+      class="background-photo-contact"
     />
     <div class="icon-container">
       <a href="#" class="icon-link" id="git"
@@ -54,7 +54,7 @@
           class="icon"
           src="/resources/images/icons/stack.png"
           alt="Stack Overflow Icon"
-        /><span id="icon-text">stack overflow</span></a
+        /><span id="icon-text">Stack overflow</span></a
       >
       <a href="#" id="location"
         ><img
@@ -71,7 +71,25 @@
         /><span id="icon-text">Add email to clipboard</span></a
       >
     </div>
-
+    <h1 class="contact-header">Contact me</h1>
+    <form action="/contact.html" method="post" class="form">
+      <input type="text" name="text-field" placeholder="Your Name" required />
+      <input
+        type="email"
+        name="email-field"
+        placeholder="Email Adress"
+        required
+      />
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Write your message here"
+        rows="5"
+        cols="30"
+        required
+      ></textarea>
+      <button type="submit" value="send">Send</button>
+    </form>
     <footer>
       <div id="footer">Made by me from scratch with love &copy 2022</div>
     </footer>

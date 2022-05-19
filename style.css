@@ -114,9 +114,12 @@ body {
   /* width: 100%; */
 }
 .background-photo-contact {
-  z-index: auto;
-  right: unset;
-  bottom: unset;
+  z-index: 0;
+  position: fixed;
+  /* max-width: 700px; */
+  width: 100%;
+  /* right: unset; */
+  /* bottom: unset; */
 }
 /* *Background Photos END*********************************** */
 
@@ -148,7 +151,7 @@ body {
   left: 1vw;
   /* bottom: 1.6vw; */
   bottom: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
-  background-color: rgb(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255, 0.9);
   border-radius: 4px;
   padding: 4px 6px 4px;
   display: none;
@@ -289,6 +292,37 @@ body {
   width: 36.5vw;
 }
 /* ******END Projects Page********************* */
+
+/* ******Contact Page************************** */
+.contact-header {
+  font-family: "Josefin Sans", sans-serif;
+  padding: 3vw;
+  position: relative;
+  top: 20vw;
+  left: 20vw;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  position: relative;
+  top: 20vw;
+  left: 20vw;
+  max-width: 50vw;
+}
+input {
+  padding: 1vw;
+  font-family: "Josefin Sans", sans-serif;
+}
+textarea {
+  max-width: 50vw;
+  max-height: 20vh;
+}
+button {
+  padding: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+/* ******END Contact Page********************** */
 #footer {
   font-family: "Josefin Sans", sans-serif;
   /* font-size: clamp(0.2rem, 2.2vw, 0.8rem); */
