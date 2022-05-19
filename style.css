@@ -135,10 +135,24 @@ body {
   padding: 0;
   /* height: clamp(20rem, 5vh, 40rem); */
 }
-#icon-text {
+.icon-container a {
   text-decoration: none;
+  color: black;
+  /* pointer-events: none; */
+  /* font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem); */
+}
+#icon-text {
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+  position: relative;
+  left: 1vw;
+  /* bottom: 1.6vw; */
+  bottom: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 4px 6px 4px;
+  display: none;
+  pointer-events: none;
 }
 .icon {
   width: clamp(2.3rem, 5vw, 3.5rem);
@@ -146,6 +160,9 @@ body {
 }
 .icon:hover {
   background-color: rgb(181, 223, 170);
+}
+.icon:hover ~ #icon-text {
+  display: inline;
 }
 /* ***END Icon Container************************************ */
 /* !For landscape phone */
@@ -166,7 +183,7 @@ body {
 }
 /* **Texts **********************************/
 .about-container {
-  z-index: 99;
+  z-index: 98;
   font-family: "Comfortaa", cursive;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 2rem;
@@ -318,4 +335,25 @@ body {
     opacity: 1;
   }
 }
-/* ************************************************************ */
+/* ***SCROLLBAR******************************************* */
+/* width */
+::-webkit-scrollbar {
+  width: clamp(0.5rem, 0.125rem + 1.6667vw, 1rem);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(120, 148, 84);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #97b497;
+}
