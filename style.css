@@ -18,15 +18,16 @@ body {
   z-index: 98;
   border-radius: 15rem;
   position: fixed;
-  max-width: 15rem;
-  min-width: 9rem;
+  max-width: 200px;
+  /* min-width: 10vw; */
   /* width: clamp(12rem, 2.5vw, 15rem); */
-  width: clamp(12rem, 9.75rem + 10vw, 15rem);
+  /* width: clamp(12rem, 9.75rem + 10vw, 15rem); */
+  width: 20vw;
   left: 0;
   top: 0;
   /* padding: 1rem; */
   margin: 1rem;
-  width: 40%;
+  /* width: 40%; */
   /* width: 50%; */
 }
 #logo:hover {
@@ -35,6 +36,8 @@ body {
 
 #button-container {
   z-index: 2;
+  position: fixed;
+  left: 40vw;
   display: flex;
   justify-content: right;
   align-content: center;
@@ -45,6 +48,7 @@ body {
 }
 
 .button {
+  background-color: rgb(255, 255, 255, 0.8);
   border-radius: 20px;
   z-index: 99;
   text-align: center;
@@ -53,14 +57,14 @@ body {
   font-size: clamp(1rem, 2.5vw, 2rem);
   text-decoration: none;
   /* padding: clamp(1rem, 5vw, 2rem); */
-  padding: 1rem;
+  padding: 0.6rem;
   margin: 0.2rem;
   transition: background-color 200ms 300ms;
   /* transition: transform 0.2s, box-shadow 0.2s; */
 }
 .button:hover {
   /* transition: background-color 10ms 20ms; */
-  background-color: rgb(158, 209, 133, 0.6);
+  background-color: rgb(158, 209, 133, 0.9);
   /* box-shadow: 0 20px 100px 1px rgba(255, 255, 255, 0.4); */
   transition: transform 100ms 100ms;
   transform: translateY(4px);
@@ -116,8 +120,9 @@ body {
 }
 /* *Background Photos END*********************************** */
 
-/* Icon Container */
+/***** Icon Container ****************************************/
 .icon-container {
+  z-index: 99;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -130,6 +135,11 @@ body {
   padding: 0;
   /* height: clamp(20rem, 5vh, 40rem); */
 }
+#icon-text {
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+}
 .icon {
   width: clamp(2.3rem, 5vw, 3.5rem);
   border-radius: 2rem;
@@ -137,7 +147,7 @@ body {
 .icon:hover {
   background-color: rgb(181, 223, 170);
 }
-
+/* ***END Icon Container************************************ */
 /* !For landscape phone */
 @media only screen and (max-height: 620px) {
   #logo {
@@ -194,7 +204,8 @@ body {
 }
 /* ******Projects Page************************* */
 .projects {
-  font-family: "Comfortaa", cursive;
+  /* /* font-family: "Comfortaa", cursive; */
+  font-family: "Josefin Sans", sans-serif;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 1rem;
   /* font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem); */
@@ -204,20 +215,61 @@ body {
   left: 10vw;
   margin-left: 3rem;
   top: 10rem;
-  border: 1px solid green;
+  /* border: 1px solid green; */
+  padding: 3rem;
+}
+.projects h1 {
+  margin-bottom: 2vh;
+  /* text-align: center; */
 }
 .project-container {
   display: grid;
-  grid-template: 20vw 20vw / 20vw 20vw;
+  /* grid-template: 20vw 20vw / 20vw 20vw; */
+  grid-template-columns: repeat(auto-fill);
   /* grid-template: 2fr 2fr / 2fr 2fr; */
-  gap: 0.5rem 1rem;
+  gap: 2rem 1rem;
   justify-content: center;
   align-items: center;
   /* justify-self: stretch; */
-  grid-auto-flow: row;
+  /* grid-auto-flow: row; */
 }
-.project-container img {
-  max-width: 20vw;
+.project {
+  text-align: center;
+}
+.project p {
+  margin: 2vw;
+}
+.project-name {
+  font-weight: 800;
+  text-shadow: 1px 1px 2px black;
+}
+.project a {
+  text-decoration: none;
+  font-weight: 700;
+  margin: 1vw;
+  padding: 0.6vw 1.8vw;
+  background-color: rgb(175, 223, 167);
+  border-radius: 1rem;
+  text-align: center;
+  /* font-size: 2rem; */
+  color: black;
+  transition: background-color 100ms 50ms;
+  transition: top 100ms 50ms;
+  box-shadow: 1px 2px 1px rgb(0, 0, 0, 0.3);
+}
+.project a:hover {
+  background-color: rgb(141, 211, 128);
+  position: relative;
+  top: 2px;
+}
+.project img {
+  border-radius: 7px;
+  width: 35vw;
+  /* transition: width 500ms 100ms; */
+  transition: width 400ms 30ms;
+}
+.project img:hover {
+  width: 36.5vw;
 }
 /* ******END Projects Page********************* */
 #footer {
@@ -233,8 +285,8 @@ body {
   margin: 0;
   padding: 0.5rem;
   width: 30vw;
-  background-color: white;
-  border-radius: 2rem;
+  background-color: rgb(255, 255, 255, 0.6);
+  border-radius: 1rem;
 }
 
 /** Fade Ideas  ############################################# */
