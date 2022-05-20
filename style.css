@@ -59,6 +59,7 @@ body {
   /* padding: clamp(1rem, 5vw, 2rem); */
   padding: 0.6rem;
   margin: 0.2rem;
+  transition: background-color 100ms 100ms;
   /* transition: background-color 200ms 300ms; */
   /* transition: box-shadow 100ms 100ms; */
   /* transition: transform 0.2s, box-shadow 0.2s; */
@@ -69,7 +70,7 @@ body {
   /* box-shadow: 0 20px 100px 1px rgba(255, 255, 255, 0.4); */
   /*  */
   transition: transform 100ms 100ms;
-  transform: translateY(4px);
+  transform: translateY(2.5px);
   box-shadow: -4px 15px 25px -4px rgba(30, 30, 60, 0.25);
 }
 /* For phone in portrait mode */
@@ -126,6 +127,13 @@ body {
   /* width: 100%; */
   /* right: unset; */
   /* bottom: unset; */
+}
+.background-thankyou {
+  z-index: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
 }
 /* *Background Photos END*********************************** */
 
@@ -308,38 +316,69 @@ body {
   font-family: "Josefin Sans", sans-serif;
   padding: 1vw;
   position: relative;
-  top: 20vw;
+  /* top: 20vw; */
+  top: 14vh;
+  width: 20vw;
   left: 20vw;
+  margin: 2vw;
 }
 .contact-text {
   font-family: "Comfortaa", cursive;
   font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+  /* font-size: clamp(0.5rem, 0.3269rem + 0.7692vw, 1rem); */
   padding: 1vw;
   position: relative;
-  top: 20vw;
+  /* top: 20vw; */
+  top: 6rem;
   left: 20vw;
-  width: 50vw;
+  max-width: 50vw;
+  margin: 1vw;
+}
+.fa-copy {
+  background-color: #d3dfa2;
+  border-radius: 3rem;
+}
+.fa-copy:hover {
+  background-color: #7aa355;
 }
 .form {
   display: flex;
   flex-direction: column;
-  gap: 2vw;
+  gap: 1rem;
   position: relative;
-  top: 20vw;
+  top: 6rem;
   left: 20vw;
-  max-width: 50vw;
+  /* max-width: 50vw; */
+  width: 50%;
+  margin: 1vw;
 }
 input {
+  border-radius: 0.3rem;
   padding: 1vw;
   font-family: "Josefin Sans", sans-serif;
 }
 textarea {
-  max-width: 50vw;
-  max-height: 20vh;
+  border-radius: 0.3rem;
+  /* max-width: 50vw; */
+  /* max-height: 20vh; */
+  width: 100%;
 }
 button {
-  padding: 1rem;
+  padding: 0.5rem;
   font-family: "Josefin Sans", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 2rem;
+  background-color: #c8d8aa;
+  box-shadow: 0px 15px 25px -4px rgba(30, 30, 60, 0.25);
+  transition: background-color 50ms 50ms;
+}
+button:hover {
+  background-color: #e1ecd7;
+  position: relative;
+  top: 3px;
+  transition: top 50ms 50ms;
+  transition: background-color 50ms 50ms;
 }
 i:hover {
   cursor: pointer;
@@ -362,6 +401,35 @@ i:hover {
   border-radius: 1rem;
 }
 
+/* ***********Thank you page********************************* */
+
+.thankyou a {
+  text-decoration: none;
+  position: relative;
+  top: 2vw;
+  margin: 1vw;
+  background-color: #86aa69;
+  box-shadow: 0px 15px 25px -4px rgba(30, 30, 60, 0.25);
+}
+.thankyou a:hover {
+  top: 2.2vw;
+  background-color: #c1dbc1;
+  transition: top 100ms 100ms;
+  transition: background-color 10ms 10ms;
+}
+.container-thankyou {
+  font-family: "Comfortaa", cursive;
+  font-size: clamp(0.7rem, 0.5962rem + 0.4615vw, 1rem);
+  text-align: center;
+  position: relative;
+  top: 12vw;
+  /* width: 100%; */
+  margin: 10vw;
+  line-height: 3rem;
+  background-color: rgb(248, 243, 233, 0.7);
+  border-radius: 4rem;
+}
+/* **********END Thank you page****************************** */
 /** Fade Ideas  ############################################# */
 */ .animate-in {
   -webkit-animation: fadeIn 0.5s ease-in;
