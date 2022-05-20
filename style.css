@@ -509,6 +509,15 @@ i:hover {
     margin-right: 0.2rem;
     width: 30vw;
   }
+  .icon-container {
+    /* bottom: 1.5rem; */
+    /* bottom: 3rem; */
+    margin: 1rem;
+    /* padding: 0; */
+  }
+  .icon {
+    width: 2rem;
+  }
   .about-container {
     margin-top: 1rem;
     max-width: 55vw;
