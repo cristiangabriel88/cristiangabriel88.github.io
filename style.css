@@ -304,19 +304,21 @@ body {
 /* ******END Projects Page********************* */
 
 /* ******Contact Page************************** */
+
 .contact-header {
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(1rem, 0.7313rem + 1.194vw, 2rem);
   padding: 1vw;
   position: relative;
   /* top: 20vw; */
-  top: 6rem;
-  width: 30vw;
+  top: 5rem;
+  width: 26vw;
   left: 35vw;
-  right: 10vw;
-  margin: 2vw;
+  /* right: 10vw; */
+  /* margin: 2vw; */
 }
 .contact-text {
+  text-align: center;
   font-family: "Comfortaa", cursive;
   font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
   /* font-size: clamp(0.5rem, 0.3269rem + 0.7692vw, 1rem); */
@@ -324,8 +326,8 @@ body {
   position: relative;
   /* top: 20vw; */
   top: 6rem;
-  left: 20vw;
-  /* width: 100%; */
+  left: 10vw;
+  width: 70%;
   /* max-width: 50vw; */
   margin: 1vw;
 }
@@ -344,7 +346,7 @@ body {
   top: 6rem;
   left: 20vw;
   width: 50%;
-  margin: 1vw;
+  margin: 2vw;
 }
 input {
   border-radius: 0.3rem;
@@ -486,10 +488,11 @@ i:hover {
   }
   #button-container-contact {
     position: relative;
-    float: left;
+    /* float: left; */
     /* flex-direction: column; */
-    /* left: 74vw; */
-    /* margin-right: 2vw; */
+    left: 0;
+    /* right: 4rem; */
+    margin-right: 1rem;
   }
   .icon-container {
     flex-direction: row;
@@ -504,12 +507,13 @@ i:hover {
     display: none;
   }
   .contact-header {
-    /* top: 20vw; */
-    top: 6rem;
-    /* width: 30vw; */
-    /* left: 10vw; */
-    right: 10vw;
-    margin: 2vw;
+    top: 5vw;
+  }
+  .contact-text {
+    top: 5vw;
+  }
+  .form {
+    top: 5vw;
   }
   #footer {
     font-size: 0.6rem;
@@ -538,9 +542,10 @@ i:hover {
     width: 30vw;
   }
   #button-container-contact {
-    /* position: fixed; */
+    position: fixed;
     /* float: left; */
     /* flex-direction: column; */
+    /* left: 19vw; */
     left: 19vw;
     /* margin-right: 2vw; */
   }
@@ -557,8 +562,17 @@ i:hover {
     margin-top: 1rem;
     max-width: 55vw;
   }
-  form {
-    /* width: ; */
+  .contact-header {
+    /* top: 1vw; */
+  }
+  .contact-text {
+    margin: 1rem;
+    /* top: 5vw; */
+    font-size: 2.5vw;
+  }
+  .form {
+    /* top: 5vw; */
+    gap: 2rem;
   }
   #footer {
     font-size: 0.5rem;
@@ -596,6 +610,14 @@ i:hover {
   }
   .icon:hover ~ #icon-text {
     display: none;
+  }
+  #button-container-contact {
+    position: fixed;
+    /* float: left; */
+    flex-direction: column;
+    left: 70vw;
+    /* left: 2vw; */
+    /* margin-right: 2vw; */
   }
   #footer {
     font-size: 0.4rem;
