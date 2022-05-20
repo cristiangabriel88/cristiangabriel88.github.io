@@ -15,7 +15,7 @@ let mail = document.getElementById("mail");
 
 // * Get age function for About Me section///
 let date = new Date();
-// age.innerHTML = date.getFullYear() - 1988;
+age.innerHTML = date.getFullYear() - 1988;
 //**************************************** */
 // function changeText(event) {
 //  text = event.target

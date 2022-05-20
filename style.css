@@ -59,15 +59,18 @@ body {
   /* padding: clamp(1rem, 5vw, 2rem); */
   padding: 0.6rem;
   margin: 0.2rem;
-  transition: background-color 200ms 300ms;
+  /* transition: background-color 200ms 300ms; */
+  /* transition: box-shadow 100ms 100ms; */
   /* transition: transform 0.2s, box-shadow 0.2s; */
 }
 .button:hover {
   /* transition: background-color 10ms 20ms; */
   background-color: rgb(158, 209, 133, 0.9);
   /* box-shadow: 0 20px 100px 1px rgba(255, 255, 255, 0.4); */
+  /*  */
   transition: transform 100ms 100ms;
   transform: translateY(4px);
+  box-shadow: -4px 15px 25px -4px rgba(30, 30, 60, 0.25);
 }
 /* For phone in portrait mode */
 @media only screen and (max-width: 570px) {
@@ -116,8 +119,11 @@ body {
 .background-photo-contact {
   z-index: 0;
   position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 60%;
   /* max-width: 700px; */
-  width: 100%;
+  /* width: 100%; */
   /* right: unset; */
   /* bottom: unset; */
 }
@@ -156,6 +162,7 @@ body {
   padding: 4px 6px 4px;
   display: none;
   pointer-events: none;
+  /* box-shadow: 22px 14px 24px 9px rgba(30, 30, 60, 0.26); */
 }
 .icon {
   width: clamp(2.3rem, 5vw, 3.5rem);
@@ -163,6 +170,7 @@ body {
 }
 .icon:hover {
   background-color: rgb(181, 223, 170);
+  box-shadow: -11px 15px 34px -5px rgba(30, 30, 60, 0.3);
 }
 .icon:hover ~ #icon-text {
   display: inline;
@@ -276,6 +284,8 @@ body {
   transition: background-color 100ms 50ms;
   transition: top 100ms 50ms;
   box-shadow: 1px 2px 1px rgb(0, 0, 0, 0.3);
+  /* box-shadow: -1px 5px 19px -5px rgba(30, 30, 60, 0.57); */
+  box-shadow: 0px 15px 25px -4px rgba(30, 30, 60, 0.25);
 }
 .project a:hover {
   background-color: rgb(141, 211, 128);
@@ -296,10 +306,19 @@ body {
 /* ******Contact Page************************** */
 .contact-header {
   font-family: "Josefin Sans", sans-serif;
-  padding: 3vw;
+  padding: 1vw;
   position: relative;
   top: 20vw;
   left: 20vw;
+}
+.contact-text {
+  font-family: "Comfortaa", cursive;
+  font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
+  padding: 1vw;
+  position: relative;
+  top: 20vw;
+  left: 20vw;
+  width: 50vw;
 }
 .form {
   display: flex;
@@ -321,6 +340,9 @@ textarea {
 button {
   padding: 1rem;
   font-family: "Josefin Sans", sans-serif;
+}
+i:hover {
+  cursor: pointer;
 }
 /* ******END Contact Page********************** */
 #footer {
