@@ -247,7 +247,7 @@ body {
   max-width: 50vw;
   left: 12vw;
   margin-left: 3rem;
-  top: 10rem;
+  top: 3rem;
   padding: 3rem;
 }
 .projects h1 {
@@ -587,6 +587,12 @@ i:hover {
     flex-direction: column;
     left: 74vw;
     margin-right: 2vw;
+  }
+  #footer {
+    font-size: 0.5rem;
+    max-width: 5rem;
+    padding: 0.5rem;
+    width: 30vw;
   }
 }
 /* !!!!!!For EXTREME cases *****/
