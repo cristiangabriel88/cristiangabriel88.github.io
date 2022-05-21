@@ -284,7 +284,8 @@ body {
   font-weight: 800;
   text-shadow: 0.3px 0.3px 1px black;
 }
-.project a {
+
+.project a:not(.project-image-link) {
   text-decoration: none;
   font-weight: 700;
   margin: 1vw;
@@ -300,7 +301,8 @@ body {
   /* box-shadow: -1px 5px 19px -5px rgba(30, 30, 60, 0.57); */
   box-shadow: 0px 15px 25px -4px rgba(30, 30, 60, 0.25);
 }
-.project a:hover {
+
+.project a:not(.project-image-link):hover {
   background-color: rgb(141, 211, 128);
   transition: background-color 50ms 50ms;
   position: relative;
