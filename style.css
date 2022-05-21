@@ -43,6 +43,19 @@ body {
   margin-right: 9vw;
 }
 
+#button-container-about {
+  z-index: 99;
+  position: fixed;
+  left: 40vw;
+  display: flex;
+  justify-content: right;
+  align-content: center;
+  gap: 1rem;
+  margin: 1rem;
+  /* margin-right: 4rem; */
+  margin-right: 9vw;
+}
+
 #button-container-projects {
   z-index: 99;
   position: fixed;
@@ -487,6 +500,10 @@ i:hover {
   #button-container {
     margin-right: 7rem;
   }
+  #button-container-about {
+    position: relative;
+    left: -15vw;
+  }
   #button-container-contact {
     position: relative;
     /* float: left; */
@@ -508,7 +525,7 @@ i:hover {
     display: none;
   }
   .about-container {
-    top: 5rem;
+    top: 3rem;
   }
   .contact-header {
     top: 5vw;
