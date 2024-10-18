@@ -554,8 +554,12 @@ i:hover {
 	}
 
 	#button-container-about {
-		position: relative;
+		/* position: relastive; */
 		/* left: -20vw; */
+		position: sticky;
+		top: 1rem;
+		z-index: 10;
+		margin-right: 30vw;
 	}
 
 	#button-container-contact {
@@ -572,6 +576,7 @@ i:hover {
 		bottom: 1.5rem;
 		gap: 0.4rem;
 		margin: 0.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.icon {
