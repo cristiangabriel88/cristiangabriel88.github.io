@@ -1,114 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link src="/resources//fonts/devicons.woff" rel="stylesheet" />
-    <link
-      href="//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css"
-      rel="stylesheet"
-    />
-    <!-- <link src="/resources/fonts/devicons.css" rel="stylesheet" /> -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600&display=swap"
-      rel="stylesheet"
-    />
-    <link href="style.css" rel="stylesheet" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="./resources/images/icons/portfolio.png"
-    />
-    <title>About Me * Cristian Gabriel</title>
-  </head>
-  <body class="animate-in">
-    <!-- <a href="/index.html">Home</a> -->
-    <header id="navbar">
-      <a href="index.html"
-        ><img src="/resources/images/logo1.png" alt="Logo" id="logo"
-      /></a>
-      <div id="button-container-about">
-        <a href="#" class="button">About</a>
-        <a href="projects.html" class="button">Projects</a>
-        <a href="contact.html" class="button">Contact</a>
-        <!-- <a href="#" class="button">Contact</a> -->
-      </div>
-    </header>
-    <img
-      src="/resources/images/about2.png"
-      alt="Background image"
-      class="background-photo-about"
-    />
-    <div class="icon-container">
-      <a target="_blank" href="https://github.com/cristiangabriel88" class="icon-link" id="git"
-        ><img
-          class="icon"
-          id="git"
-          src="/resources/images/icons/git.png"
-          alt="Github Icon"
-        /><span id="icon-text">Github</span></a
-      >
-      <a target="_blank" href="https://www.linkedin.com/in/cristian-gabriel-constantinescu-781a6b237" id="linkedIn"
-        ><img
-          class="icon"
-          src="/resources/images/icons/linked.png"
-          alt="Linked In Icon"
-        /><span id="icon-text">LinkedIn</span></a
-      >
-      <a target="_blank" href="https://stackoverflow.com/users/18754276/cristiangabriel" id="stack"
-        ><img
-          class="icon"
-          src="/resources/images/icons/stack.png"
-          alt="Stack Overflow Icon"
-        /><span id="icon-text">Stack overflow</span></a
-      >
-      <a target="_blank" href="https://www.google.com/maps/place/Bucharest/@44.4378258,26.0946376,11z/data=!3m1!4b1!4m5!3m4!1s0x40b1f93abf3cad4f:0xac0632e37c9ca628!8m2!3d44.4267674!4d26.1025384" id="location"
-        ><img
-          class="icon"
-          src="/resources/images/icons/location.png"
-          alt="Location Icon"
-        /><span id="icon-text">Bucharest, Romania</span></a
-      >
-      <a target="_blank" href="#" id="mail" onclick="copyText()"
-        ><img
-          class="icon"
-          src="/resources/images/icons/mail.png"
-          alt="E-mail Icon"
-        /><span id="icon-text">Add email to clipboard</span></a
-      >
-    </div>
-    <article class="about-container">
-      <h1 class="head">About Me</h1>
-      <p class="first-paragraph">
-        My name is Constantinescu Cristian-Gabriel and I'm an aspiring, passionate Front-End Engineer, living in Bucharest,
-        Romania. I'm <span id="age"></span> years of age and I started my coding
-        journey in high-school, where I wrote my first computer program in Turbo
-        Pascal and loved the feeling of making your ideas into an actual working projects.
-        <!-- I'm also a jazz musician and music producer. I would love to -->
-        <!-- work on projects that incorporate music into programming. -->
-      </p>
-      <p class="second-paragraph">
-        I love learning new things, I enjoy making things from scratch, or taking things apart and seeing
-        what makes them work and how to implement those ideas into my own
-        projects.
-      </p>
-      <h3 class="head">My skills include</h3>
-      <p class="dev-icons">
-        <span>&#xe636</span>
-        <span>&#xe64a</span>
-        <span>&#xe64e</span>
-        <span>&#xe647</span>
-        <span>&#xe609</span>
-        <span>&#xe602</span>
-        <span>&#xe60c</span>
-      </p>
-    </article>
-    <footer>
-      <div id="footer">Made by me from scratch with love &copy 2022</div>
-    </footer>
-    <script src="/script.js"></script>
-  </body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link src="/resources//fonts/devicons.woff" rel="stylesheet" />
+	<link href="//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css" rel="stylesheet" />
+	<!-- <link src="/resources/fonts/devicons.css" rel="stylesheet" /> -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600&display=swap"
+		rel="stylesheet" />
+	<link href="style.css" rel="stylesheet" />
+	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/icons/favicon.ico" />
+	<title>About Me * Cristian Gabriel</title>
+</head>
+
+<body class="animate-in">
+	<!-- <a href="/index.html">Home</a> -->
+	<header id="navbar">
+		<a href="index.html"><img src="/resources/images/logo1.png" alt="Logo" id="logo" /></a>
+		<div id="button-container-about">
+			<a href="#" class="button">About</a>
+			<a href="projects.html" class="button">Projects</a>
+			<a href="contact.html" class="button">Contact</a>
+			<!-- <a href="#" class="button">Contact</a> -->
+		</div>
+	</header>
+	<img src="/resources/images/about2.jpg" alt="Background image" class="background-photo-about" />
+	<div class="icon-container">
+		<a target="_blank" href="https://github.com/cristiangabriel88" class="icon-link" id="git"><img class="icon"
+				id="git" src="/resources/images/icons/git.png" alt="Github Icon" /><span
+				id="icon-text">Github</span></a>
+		<a target="_blank" href="https://www.linkedin.com/in/cristian-gabriel-constantinescu-781a6b237"
+			id="linkedIn"><img class="icon" src="/resources/images/icons/linked.png" alt="Linked In Icon" /><span
+				id="icon-text">LinkedIn</span></a>
+		<a target="_blank" href="https://stackoverflow.com/users/18754276/cristiangabriel" id="stack"><img class="icon"
+				src="/resources/images/icons/stack.png" alt="Stack Overflow Icon" /><span id="icon-text">Stack
+				overflow</span></a>
+		<a target="_blank"
+			href="https://www.google.com/maps/place/Bucharest/@44.4378258,26.0946376,11z/data=!3m1!4b1!4m5!3m4!1s0x40b1f93abf3cad4f:0xac0632e37c9ca628!8m2!3d44.4267674!4d26.1025384"
+			id="location"><img class="icon" src="/resources/images/icons/location.png" alt="Location Icon" /><span
+				id="icon-text">Bucharest, Romania</span></a>
+		<a target="_blank" href="#" id="mail" onclick="copyText()"><img class="icon"
+				src="/resources/images/icons/mail.png" alt="E-mail Icon" /><span id="icon-text">Add email to
+				clipboard</span></a>
+	</div>
+	<article class="about-container">
+		<h1 class="head">About Me</h1>
+		<p class="first-paragraph">
+			My name is Cristian Gabriel and I'm an aspiring, passionate Front-End Engineer. I'm <span id="age"></span>
+			years of age and I started my coding
+			journey in high-school, where I wrote my first computer program in Turbo
+			Pascal and loved the feeling of making your ideas into an actual working projects.
+		</p>
+		<p class="second-paragraph">
+			I love learning new things, I enjoy making things from scratch, or taking things apart and seeing
+			what makes them work and how to implement those ideas into my own
+			projects.
+		</p>
+		<h3 class="head">My skills include</h3>
+		<p class="dev-icons">
+			<span>&#xe636</span>
+			<span>&#xe64a</span>
+			<span>&#xe64e</span>
+			<span>&#xe647</span>
+			<span>&#xe609</span>
+			<span>&#xe602</span>
+			<span>&#xe60c</span>
+		</p>
+	</article>
+	<footer>
+		<div id="footer">Made by me from scratch with love &copy 2022</div>
+	</footer>
+	<script src="/script.js"></script>
+</body>
+
 </html>
