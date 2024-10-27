@@ -286,7 +286,13 @@ body {
 }
 
 .projects h1 {
-	margin-bottom: 2vh;
+	margin-bottom: 3vh;
+	font-weight: 800;
+	font-size: 3rem;
+}
+
+.project-name {
+	margin: 0 !important;
 }
 
 .project-container {
@@ -303,11 +309,12 @@ body {
 }
 
 .project p {
-	margin: 2vw;
+	margin: 1vw;
 }
 
 .project-name {
 	font-weight: 800;
+	font-size: larger;
 	text-shadow: 0.3px 0.3px 1px black;
 }
 
