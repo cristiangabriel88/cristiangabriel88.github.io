@@ -13,5 +13,5 @@ window.onload = function () {
 };
 
 function copyText() {
-  navigator.clipboard.writeText("cristiconstantinescu88@gmail.com");
+  navigator.clipboard.writeText("me@cristiangabriel.dev");
 }
