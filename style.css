@@ -298,7 +298,7 @@ body {
 .project-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fill);
-	gap: 2rem 1rem;
+	gap: 3rem 1rem;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
@@ -319,25 +319,33 @@ body {
 }
 
 .project a:not(.project-image-link) {
+
+	font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-weight: 200;
+	letter-spacing: 0.01em;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
 	text-decoration: none;
-	font-weight: 700;
-	margin: 1vw;
-	padding: 0.6vw 1.8vw;
+
+	min-width: 180px;
+	height: 44px;
+
+	margin: 2rem;
+	padding: 0 1.2rem;
+
 	background-color: rgb(175, 223, 167);
 	border-radius: 1rem;
-	text-align: center;
-	/* font-size: 2rem; */
 	color: black;
-	transition: background-color 100ms 50ms;
-	transition: top 100ms 50ms;
-	box-shadow: 1px 2px 1px rgb(0, 0, 0, 0.3);
-	/* box-shadow: -1px 5px 19px -5px rgba(30, 30, 60, 0.57); */
+
+	transition: background-color 100ms ease, top 100ms ease;
 	box-shadow: 0px 15px 25px -4px rgba(30, 30, 60, 0.25);
 }
 
 .project a:not(.project-image-link):hover {
 	background-color: rgb(141, 211, 128);
-	transition: background-color 50ms 50ms;
 	position: relative;
 	top: 2px;
 }
@@ -349,9 +357,30 @@ body {
 	transition: width 400ms 30ms;
 }
 
-.project img:hover {
+.project img:not(.img-fluid) {
+	border-radius: 7px;
+	width: 35vw;
+	transition: width 400ms 30ms;
+}
+
+.project img:not(.img-fluid):hover {
 	width: 36.5vw;
 }
+
+.project-image-link img {
+	width: min(600px, 100%);
+	aspect-ratio: 900 / 520;
+	height: auto;
+	object-fit: cover;
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+/* .project img:hover {
+	width: 36.5vw;
+} */
 
 /* ******END Projects Page********************* */
 
@@ -457,7 +486,7 @@ i:hover {
 	bottom: 0;
 	margin: 0;
 	padding: 0.5rem;
-	width: 30vw;
+	width: 40vw;
 	background-color: rgb(255, 255, 255, 0.6);
 	border-radius: 1rem;
 }

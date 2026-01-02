@@ -9,6 +9,7 @@
 		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 	<link
 		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600&display=swap"
 		rel="stylesheet" />
@@ -43,8 +44,10 @@
 			href="https://www.google.com/maps/place/Bucharest/@44.4378258,26.0946376,11z/data=!3m1!4b1!4m5!3m4!1s0x40b1f93abf3cad4f:0xac0632e37c9ca628!8m2!3d44.4267674!4d26.1025384"
 			id="location"><img class="icon" src="/resources/images/icons/location.png" alt="Location Icon" /><span
 				id="icon-text">Bucharest, Romania</span></a>
-		<a href="#" id="mail" onclick="copyText()"><img class="icon" src="/resources/images/icons/mail.png"
-				alt="E-mail Icon" /><span id="icon-text">Add email to clipboard</span></a>
+		<a href="#" id="mail" onclick="event.preventDefault(); copyText();">
+			<img class="icon" src="/resources/images/icons/mail.png" alt="E-mail Icon" />
+			<span id="icon-text">Add email to clipboard</span>
+		</a>
 	</div>
 	<div class="projects container">
 		<div class="project-container text-center">
@@ -54,23 +57,23 @@
 				<p class="project-name">Impostor</p>
 				<p class="project-description">A mobile-first social game where players try to spot the
 					hidden impostor among friends</p>
-				<a target="_blank" class="project-image-link" href="https://impostorgame.top/">
-					<img src="/resources/images/Projects/impostorGame.png" class="img-fluid" alt="Impostor game" />
+				<a target="_blank" rel="noopener noreferrer" class="project-image-link"
+					href="https://impostorgame.top/">
+					<img loading="lazy" src="/resources/images/Projects/impostorGame.png" class="img-fluid"
+						alt="Impostor game" />
 				</a>
 				<div class="d-flex justify-content-center">
-					<a target="_blank" href="https://impostorgame.top/">Visit</a>
+					<a target="_blank" rel="noopener noreferrer" href="https://impostorgame.top/">Play the game</a>
 				</div>
 			</div>
 
 			<div class="LoopTube project">
-				<p class="project-name">LoopTube</p>
+				<p class="project-name">Loopretto</p>
 				<p class="project-description">Transcription tool for musicians. Find your notes</p>
-				<a target="_blank" class="project-image-link" href="/Looptube/index.html">
-					<img src="/resources/images/Projects/Looptube.png" class="img-fluid" alt="QuickPaste" />
+				<a target="_blank" rel="noopener noreferrer" class="project-image-link" href="#">
+					<img loading="lazy" src="/resources/images/Projects/Looptube.png" class="img-fluid"
+						alt="Loopretto" />
 				</a>
-				<div class="d-flex justify-content-center">
-					<a target="_blank" href="/Looptube/index.html">Visit</a>
-				</div>
 			</div>
 
 
@@ -78,12 +81,15 @@
 				<p class="project-name">QuickPaste</p>
 				<p class="project-description">Save text clips from websites as notes in a collection with this Chrome
 					extension</p>
-				<a target="_blank" class="project-image-link" href="/QuickPaste/index.html">
-					<img src="/resources/images/Projects/QuickPaste/ScreenShot2.jpg" class="img-fluid"
+				<a target="_blank" rel="noopener noreferrer" class="project-image-link"
+					href="https://chromewebstore.google.com/detail/quickpaste/kdlcijllofgjnpdghojpdhjjhnnffcgb">
+					<img loading="lazy" src="/resources/images/Projects/QuickPaste/ScreenShot2.jpg" class="img-fluid"
 						alt="QuickPaste" />
 				</a>
 				<div class="d-flex justify-content-center">
-					<a target="_blank" href="/QuickPaste/index.html">Visit</a>
+					<a target="_blank" rel="noopener noreferrer"
+						href="https://chromewebstore.google.com/detail/quickpaste/kdlcijllofgjnpdghojpdhjjhnnffcgb">Install
+						Chrome Extension</a>
 				</div>
 			</div>
 
@@ -93,44 +99,28 @@
 					Generates a graph to analyze the interest trend of the 5 most common and important words on the
 					website
 				</p>
-				<a target="_blank"
-					href="https://htmlpreview.github.io/?https://github.com/cristiangabriel88/furniture-boutique/blob/f8d1309e74cb806ec279eba87a7bacc981e7ef82/index.html"
-					class="project-image-link"><img src="/resources/images/Projects/Trendalizer.png" /></a>
-				<div class="d-flex justify-content-center">
-					<a target="_blank"
-						href="https://htmlpreview.github.io/?https://github.com/cristiangabriel88/furniture-boutique/blob/f8d1309e74cb806ec279eba87a7bacc981e7ef82/index.html">Visit</a>
-				</div>
+				<a target="_blank" rel="noopener noreferrer" href="#" class="project-image-link"><img loading="lazy"
+						class="img-fluid" alt="Trendalizer" src="/resources/images/Projects/Trendalizer.png" /></a>
+
 			</div>
 			<div class="first project">
 				<p class="project-name">Furniture Boutique</p>
 				<p class="project-description">
 					Landing page for a fictional furniture production woodshop
 				</p>
-				<a target="_blank" href="https://cristiangabriel88.github.io/furniture-boutique/"
-					class="project-image-link"><img src="/resources/images/Projects/furniture-boutique.bmp" /></a>
+				<a target="_blank" rel="noopener noreferrer"
+					href="https://cristiangabriel88.github.io/furniture-boutique/" class="project-image-link"><img
+						loading="lazy" class="img-fluid" alt="Furniture Boutique"
+						src="/resources/images/Projects/furniture-boutique.bmp" /></a>
 				<div class="d-flex justify-content-center">
-					<a target="_blank" href="https://cristiangabriel88.github.io/furniture-boutique/">Visit</a>
+					<a target="_blank" rel="noopener noreferrer"
+						href="https://cristiangabriel88.github.io/furniture-boutique/">Visit</a>
 				</div>
 			</div>
-
-			<!-- <div class="third project">
-				<img src="/resources/images/Projects/Project3.jpg" />
-				<p class="project-name">My third project</p>
-				<p class="project-description">In the making</p>
-				<a href="#">Source</a>
-				<a href="#">Visit</a>
-			</div>
-			<div class="fourth project">
-				<img src="/resources/images/Projects/Project4.jpg" />
-				<p class="project-name">My fourth project</p>
-				<p class="project-description">in the making</p>
-				<a href="#">Source</a>
-				<a href="#">Visit</a>
-			</div> -->
 		</div>
 	</div>
 	<footer>
-		<div id="footer">Made from scratch &copy 2022</div>
+		<div id="footer">Made from scratch <br>&copy 2021–<span id="year"></span></div>
 	</footer>
 	<script src="/script.js"></script>
 </body>

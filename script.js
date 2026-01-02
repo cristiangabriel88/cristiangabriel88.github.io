@@ -15,3 +15,5 @@ window.onload = function () {
 function copyText() {
   navigator.clipboard.writeText("me@cristiangabriel.dev");
 }
+
+document.getElementById("year").textContent = new Date().getFullYear();
