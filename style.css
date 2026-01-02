@@ -46,18 +46,15 @@ body {
 }
 
 #button-container-about {
-	z-index: 99;
-	position: fixed;
+	position: absolute;
+	top: 1rem;
 	left: 60vw;
+	z-index: 99;
+
 	display: flex;
-	justify-content: right;
-	/* align-content: center; */
+	justify-content: flex-end;
 	align-items: center;
-	/* flex-wrap: wrap; */
 	gap: 1rem;
-	margin: 1rem;
-	/* margin-right: 4rem; */
-	margin-right: 9vw;
 }
 
 #button-container-projects {
@@ -234,7 +231,7 @@ body {
 .about-container {
 	z-index: 98;
 	font-family: "Comfortaa", cursive;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	border-radius: 2rem;
 	/* font-size: clamp(0.5rem, 0.1538rem + 1.5385vw, 1.5rem); */
 	font-size: clamp(0.5rem, 0.167rem + 1.5671vw, 1.5rem);
@@ -708,8 +705,8 @@ i:hover {
 		/* position: relative; */
 		/* flex-shrink: inherit; */
 		/* flex-direction: column; */
-		right: 1rem;
-		gap: 0;
+		right: 3rem;
+		gap: 2;
 		margin-right: 0;
 	}
 
@@ -737,6 +734,7 @@ i:hover {
 		margin-top: 1rem;
 		max-width: 55vw;
 		top: 5rem;
+		font-size: small;
 	}
 
 	.contact-text {
@@ -761,6 +759,12 @@ i:hover {
 /* !!!!Project page quirk!!! */
 @media only screen and (max-width: 1100px) {
 	#button-container-projects {
+		/* flex-direction: column; */
+		left: 50vw;
+		margin-right: 2vw;
+	}
+
+	#button-container-about {
 		/* flex-direction: column; */
 		left: 50vw;
 		margin-right: 2vw;
