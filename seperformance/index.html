@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Stefan Ecliserescu · Arta Spectacolului cu Foc & Flow</title>
+  <meta name="description" content="Stefan Ecliserescu Performance Arts, jonglerie profesională cu foc și spectacole flow. Show-uri de foc cinematice pentru festivaluri, nunți, evenimente corporate, cluburi și petreceri private. Rezervă un spectacol.">
+  <meta name="keywords" content="performer foc, jonglerie cu foc, flow arts, spectacol foc, performance LED, entertainment evenimente, Stefan Ecliserescu">
+  <meta property="og:title" content="Stefan Ecliserescu · Arta Spectacolului cu Foc & Flow">
+  <meta property="og:description" content="Te joci cu focul, profesionist. Spectacole de foc și flow cinematice pentru evenimente de neuitat.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#15110d">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="apple-touch-icon" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lenis: premium momentum smooth-scroll (the "keep gliding after you lift off" feel) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</helmet>
+
+<!-- ============ NAV ============ -->
+<nav id="site-nav">
+  <a href="#hero" aria-label="Stefan Ecliserescu acasă" class="nav-logo">
+    <span aria-hidden="true" class="nav-logo-mark"><svg width="22" height="22" viewBox="0 0 64 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" fill="#0b0908" d="M34.7 11c0 8 8 13.3 13.3 22.7C50.7 39.3 52 43.3 52 47c0 11.7-9.6 18-20 18s-20-6.3-20-18c0-10.7 8-20 12-29.3 1.3 5.3 5.3 8 6.7 13.3 1.9-9.3-1.3-17.3 4-20Zm-2.7 49.3c6.7 0 12-5.1 12-11.9 0-3.8-1.6-6.4-4.1-9.7-.5 3.7-3.2 5.9-5.6 5.9 2.4-4.8-.5-10.1-1.3-12.3-2.7 4-6.9 8-6.9 16.1 0 6.8 4.5 11.9 5.9 11.9Z"/></svg></span>
+    <span class="nav-logo-text">Stefan&nbsp;Ecliserescu</span>
+  </a>
+
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div class="nav-links">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5">
+        <a href="{{ link.href }}" class="nav-link">{{ link.label }}</a>
+      </sc-for>
+      <!-- language selector -->
+      <div role="group" aria-label="{{ t.langLabel }}" class="lang-group">
+        <button onClick="{{ setRo }}" aria-pressed="{{ isRo }}" class="seg seg-sm {{ roBtnActive }}">RO</button>
+        <button onClick="{{ setEn }}" aria-pressed="{{ isEn }}" class="seg seg-sm {{ enBtnActive }}">EN</button>
+      </div>
+      <a href="#contact" class="btn-book">{{ t.book }}</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="{{ t.openMenu }}" aria-expanded="{{ menuOpen }}" class="nav-burger">
+      <span aria-hidden="true" class="burger-line"></span>
+      <span aria-hidden="true" class="burger-line"></span>
+      <span aria-hidden="true" class="burger-line burger-line--short"></span>
+    </button>
+  </sc-if>
+</nav>
+
+<!-- ============ SCROLL PROGRESS - a fuse burning down ============ -->
+<div id="scroll-fuse" aria-hidden="true"></div>
+
+<!-- ============ MOBILE MENU OVERLAY ============ -->
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div class="mobile-menu">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">{{ t.menu }}</span>
+      <button onClick="{{ closeMenu }}" aria-label="{{ t.closeMenu }}" class="mobile-menu-close">&times;</button>
+    </div>
+    <div class="mobile-menu-links">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5">
+        <a href="{{ link.href }}" onClick="{{ closeMenu }}" class="mobile-menu-link">{{ link.label }}</a>
+      </sc-for>
+    </div>
+    <!-- language selector -->
+    <div class="mobile-lang">
+      <span class="mobile-lang-label">{{ t.langLabel }}</span>
+      <div role="group" aria-label="{{ t.langLabel }}" class="lang-group lang-group--lg">
+        <button onClick="{{ setRo }}" aria-pressed="{{ isRo }}" class="seg seg-lg {{ roBtnActive }}">Română</button>
+        <button onClick="{{ setEn }}" aria-pressed="{{ isEn }}" class="seg seg-lg {{ enBtnActive }}">English</button>
+      </div>
+    </div>
+    <a href="#contact" onClick="{{ closeMenu }}" class="mobile-book">{{ t.book }}</a>
+  </div>
+</sc-if>
+
+<!-- ============ HERO (overlay around existing fire video) ============ -->
+<section id="hero">
+  <!-- existing autoplaying muted looping fire video -->
+  <div id="hero-media" aria-hidden="true">
+    <!-- cap the video near its native width (1764px) so big screens don't upscale & pixelate -->
+    <div class="hero-media-cap">
+      <!-- single native-looping video: clip is a ping-pong (start≈end frame) so loop is seamless -->
+      <div id="hero-video">
+        <video class="hero-layer is-on" autoplay muted loop playsinline preload="auto">
+          <source src="loop_pingpong.webm" type="video/webm">
+          <source src="loop_pingpong.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- dark frame: gentle fade to black on the sides and lower part -->
+      <div class="hero-fade"></div>
+    </div>
+  </div>
+  <div id="hero-content">
+    <h1 class="hero-title">{{ t.tagline }}</h1>
+  </div>
+
+  <!-- scroll indicator -->
+  <a href="#about" aria-label="{{ t.scrollAria }}" class="hero-scroll">
+    <span class="hero-scroll-label">{{ t.scroll }}</span>
+    <span aria-hidden="true" class="hero-scroll-line"></span>
+  </a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="section">
+  <div aria-hidden="true" class="glow glow--about"></div>
+  <div class="about-grid">
+    <div data-reveal>
+      <span class="kicker">{{ t.about.kicker }}</span>
+      <h2 class="section-h2">{{ t.about.h2 }}</h2>
+      <p class="about-p about-p--first">{{ t.about.p1 }}</p>
+      <p class="about-p">{{ t.about.p2 }}</p>
+    </div>
+    <div data-reveal class="about-media">
+      <img src="gallery/2.jpg" alt="{{ t.about.imgAlt }}" loading="lazy" class="about-img">
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTS / SERVICES ============ -->
+<section id="acts" class="section">
+  <div class="container">
+    <div data-reveal class="section-head">
+      <span class="kicker">{{ t.acts.kicker }}</span>
+      <h2 class="section-h2">{{ t.acts.h2 }}</h2>
+    </div>
+    <div class="acts-grid">
+      <sc-for list="{{ acts }}" as="act" hint-placeholder-count="4">
+        <article data-reveal class="act-card">
+          <span aria-hidden="true" class="act-icon"></span>
+          <h3 class="act-title">{{ act.title }}</h3>
+          <p class="act-desc">{{ act.desc }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY (masonry, hover zoom) ============ -->
+<section id="gallery" class="section">
+  <div class="container--wide">
+    <div data-reveal class="gallery-head">
+      <div class="section-head">
+        <span class="kicker">{{ t.gallery.kicker }}</span>
+        <h2 class="section-h2">{{ t.gallery.h2 }}</h2>
+      </div>
+      <a href="https://www.instagram.com/seperformancearts/" target="_blank" rel="noopener" class="gallery-more">{{ t.gallery.more }}</a>
+    </div>
+    <!-- masonry via CSS columns; swap placeholders for real photos/clips -->
+    <div data-reveal class="masonry">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+        <figure class="masonry-item">
+          <img src="{{ g.src }}" alt="{{ g.label }}" loading="lazy" class="g-tile {{ g.cls }}">
+          <sc-if value="{{ g.video }}" hint-placeholder-val="{{ false }}">
+            <span aria-hidden="true" class="play-badge">&#9658;</span>
+          </sc-if>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS / BOOKING OCCASIONS ============ -->
+<section id="events" class="section section--clip">
+  <div aria-hidden="true" class="glow glow--events"></div>
+  <div class="container--rel">
+    <div data-reveal class="section-head">
+      <span class="kicker">{{ t.events.kicker }}</span>
+      <h2 class="section-h2">{{ t.events.h2 }}</h2>
+    </div>
+    <div class="events-grid">
+      <sc-for list="{{ occasions }}" as="o" hint-placeholder-count="6">
+        <div data-reveal class="event-card">
+          <h3 class="event-title">{{ o.title }}</h3>
+          <p class="event-desc">{{ o.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div data-reveal class="section-head--center">
+      <span class="kicker">{{ t.testimonials.kicker }}</span>
+      <h2 class="section-h2">{{ t.testimonials.h2 }}</h2>
+    </div>
+    <div class="tst-grid">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+        <figure data-reveal class="tst-card">
+          <span aria-hidden="true" class="tst-mark">&ldquo;</span>
+          <blockquote class="tst-quote">{{ t.quote }}</blockquote>
+          <figcaption class="tst-cap">
+            <span aria-hidden="true" class="tst-avatar"></span>
+            <span><span class="tst-name">{{ t.name }}</span><span class="tst-role">{{ t.role }}</span></span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / BOOKING ============ -->
+<section id="contact" class="section section--clip">
+  <div aria-hidden="true" class="glow glow--contact"></div>
+  <div class="contact-grid">
+    <div data-reveal>
+      <span class="kicker">{{ t.contact.kicker }}</span>
+      <h2 class="section-h2 section-h2--sm">{{ t.contact.h2 }}</h2>
+      <p class="contact-lead">{{ t.contact.lead }}</p>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/seperformancearts/" target="_blank" rel="noopener" class="contact-link">
+          <span aria-hidden="true" class="contact-ico">&#9685;</span>
+          @seperformancearts
+        </a>
+        <a href="mailto:contact@seperformancearts.com" class="contact-link">
+          <span aria-hidden="true" class="contact-ico">@</span>
+          contact@seperformancearts.com
+        </a>
+      </div>
+    </div>
+
+    <div data-reveal class="contact-card">
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" class="contact-form">
+          <label class="field">{{ t.contact.name }}
+            <input type="text" name="name" required placeholder="{{ t.contact.namePh }}" class="input">
+          </label>
+          <label class="field">{{ t.contact.email }}
+            <input type="email" name="email" required placeholder="{{ t.contact.emailPh }}" class="input">
+          </label>
+          <div class="c-grid-2">
+            <label class="field">{{ t.contact.eventType }}
+              <select name="eventType" required class="input">
+                <option value="">{{ t.contact.select }}</option>
+                <sc-for list="{{ eventTypes }}" as="et" hint-placeholder-count="6">
+                  <option value="{{ et }}">{{ et }}</option>
+                </sc-for>
+              </select>
+            </label>
+            <div class="field"><span>{{ t.contact.date }}</span>
+              <div class="dp-wrap">
+                <button type="button" onClick="{{ toggleDate }}" aria-haspopup="dialog" aria-expanded="{{ dateOpen }}" class="dp-field {{ dateOpenCls }}">
+                  <span class="dp-val {{ dateValueCls }}">{{ dateDisplay }}</span>
+                  <svg class="dp-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path></svg>
+                </button>
+                <input type="hidden" name="date" value="{{ selectedDate }}">
+                <sc-if value="{{ dateOpen }}" hint-placeholder-val="{{ false }}">
+                  <div class="dp-pop" role="dialog" aria-label="{{ t.contact.date }}">
+                    <div class="dp-head">
+                      <button type="button" onClick="{{ calPrev }}" class="dp-nav" aria-label="{{ t.contact.prevMonth }}">&lsaquo;</button>
+                      <span class="dp-title">{{ calLabel }}</span>
+                      <button type="button" onClick="{{ calNext }}" class="dp-nav" aria-label="{{ t.contact.nextMonth }}">&rsaquo;</button>
+                    </div>
+                    <div class="dp-week">
+                      <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7"><span>{{ w }}</span></sc-for>
+                    </div>
+                    <div class="dp-grid">
+                      <sc-for list="{{ calDays }}" as="cell" hint-placeholder-count="35">
+                        <sc-if value="{{ cell.empty }}" hint-placeholder-val="{{ false }}"><span class="dp-cell-empty"></span></sc-if>
+                        <sc-if value="{{ cell.real }}" hint-placeholder-val="{{ true }}"><button type="button" class="dp-day {{ cell.cls }}" onClick="{{ cell.onClick }}">{{ cell.day }}</button></sc-if>
+                      </sc-for>
+                    </div>
+                    <div class="dp-foot">
+                      <button type="button" onClick="{{ calToday }}" class="dp-foot-btn">{{ t.contact.today }}</button>
+                      <button type="button" onClick="{{ calClear }}" class="dp-foot-btn">{{ t.contact.clear }}</button>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <label class="field">{{ t.contact.message }}
+            <textarea name="message" rows="4" placeholder="{{ t.contact.messagePh }}" class="input input--area"></textarea>
+          </label>
+          <button type="submit" class="btn-submit">{{ t.contact.submit }}</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div class="contact-success">
+          <span aria-hidden="true" class="contact-success-ico">&#10003;</span>
+          <h3 class="contact-success-title">{{ t.contact.successTitle }}</h3>
+          <p class="contact-success-text">{{ t.contact.successText }}</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div aria-hidden="true" class="footer-embers">{{ footerEmbers }}</div>
+  <div class="container--rel">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <span aria-hidden="true" class="footer-mark"><svg width="23" height="23" viewBox="0 0 64 64" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" fill="#0b0908" d="M34.7 11c0 8 8 13.3 13.3 22.7C50.7 39.3 52 43.3 52 47c0 11.7-9.6 18-20 18s-20-6.3-20-18c0-10.7 8-20 12-29.3 1.3 5.3 5.3 8 6.7 13.3 1.9-9.3-1.3-17.3 4-20Zm-2.7 49.3c6.7 0 12-5.1 12-11.9 0-3.8-1.6-6.4-4.1-9.7-.5 3.7-3.2 5.9-5.6 5.9 2.4-4.8-.5-10.1-1.3-12.3-2.7 4-6.9 8-6.9 16.1 0 6.8 4.5 11.9 5.9 11.9Z"/></svg></span>
+          <span class="footer-name">Stefan Ecliserescu</span>
+        </div>
+        <p class="footer-desc">{{ t.footer.desc }}</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <span class="footer-col-title">{{ t.footer.explore }}</span>
+          <div class="footer-col-links">
+            <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5">
+              <a href="{{ link.href }}" class="footer-link">{{ link.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-title">{{ t.footer.connect }}</span>
+          <div class="footer-col-links">
+            <a href="https://www.instagram.com/seperformancearts/" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+            <a href="#contact" class="footer-link">{{ t.book }}</a>
+            <a href="mailto:contact@seperformancearts.com" class="footer-link">contact@seperformancearts.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-fine">{{ t.footer.rights }}</span>
+      <span class="footer-fine">@seperformancearts</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: 760 },
+  &quot;ambientEmbers&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;
+  },
+  &quot;parallaxHero&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;
+  }
+}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const _now = (typeof Date !== 'undefined') ? new Date() : null;
+    this.state = {
+      isMobile: typeof window !== 'undefined' ? window.innerWidth < 860 : false,
+      menuOpen: false,
+      submitted: false,
+      lang: 'ro',  // Romanian by default; switchable to 'en' via the language selector
+      // ---- custom datepicker ----
+      dateOpen: false,
+      selectedDate: '',                                 // ISO yyyy-mm-dd, '' when unset
+      calYear: _now ? _now.getFullYear() : 2026,        // month currently shown in the calendar
+      calMonth: _now ? _now.getMonth() : 0
+    };
+
+    // ---- Static gallery media (labels are localized below and merged in renderVals) ----
+    this.galleryMeta = [
+      { cls: 'ar-1x1',  src: 'gallery/1.jpg', video: false },
+      { cls: 'ar-4x5',  src: 'gallery/2.jpg', video: false },
+      { cls: 'ar-16x9', src: 'gallery/3.jpg', video: false },
+      { cls: 'ar-4x5',  src: 'gallery/4.jpg', video: false }
+    ];
+
+    // ---- Translations: Romanian (default) + English ----
+    this.content = {
+      ro: {
+        tagline: 'Lumină. Mișcare. Spectacol.',
+        book: 'Rezervă un spectacol',
+        menu: 'Meniu',
+        langLabel: 'Limbă',
+        openMenu: 'Deschide meniul',
+        closeMenu: 'Închide meniul',
+        scroll: 'Derulează',
+        scrollAria: 'Derulează către conținut',
+        nav: { about: 'Despre', acts: 'Numere', gallery: 'Galerie', events: 'Evenimente', contact: 'Contact' },
+        about: {
+          kicker: 'Despre',
+          h2: 'Foc, mișcare și precizie, create pentru scenă.',
+          imgAlt: 'Stefan Ecliserescu performând cu foc pe scenă',
+          p1: 'Stefan Ecliserescu este un artist performer specializat în foc și manipulare de obiecte: jonglerie cu foc și flow arts montate ca un spectacol cinematic, de mare impact. Fiecare număr este coregrafiat pentru a capta întreaga sală, de la evenimente private intime până la scena principală a festivalurilor.',
+          p2: 'Cu ani de experiență pe scenă, Stefan aduce la fiecare eveniment un spectacol sigur, profesionist și spectaculos, disponibil pentru deplasări în țară și în străinătate.'
+        },
+        acts: {
+          kicker: 'Numere & Servicii',
+          h2: 'Spectacole create pentru spațiul tău.',
+          items: [
+            { no: '01', title: 'Jonglerie cu Foc', desc: 'Cluburi, torțe și cuțite în secvențe controlate, de mare viteză: precizie și curaj pur.' },
+            { no: '02', title: 'Spectacol de Foc', desc: 'Un set complet coregrafiat pe muzică. Creat pentru scena principală și momentul de vârf.' },
+            { no: '03', title: 'Spectacol Flow / LED', desc: 'Glow, poi și efecte vizuale LED programabile: un spectacol fără flacără pentru spații interioare.' },
+            { no: '04', title: 'Scenă & Evenimente', desc: 'Numere personalizate adaptate spațiului, conceptului și publicului tău, de la intim la arenă.' }
+          ]
+        },
+        gallery: {
+          kicker: 'Galerie',
+          h2: 'Lumină, surprinsă.',
+          more: 'Vezi mai mult pe Instagram →',
+          labels: [
+            'Spectacol cu baloane uriașe în parc',
+            'Înghițire de foc sub cerul nopții',
+            'Scântei în timpul unui spectacol de foc',
+            'Spectacol de foc în duo pentru publicul de pe stradă'
+          ]
+        },
+        events: {
+          kicker: 'Evenimente',
+          h2: 'Create pentru momentele care contează.',
+          items: [
+            { title: 'Festivaluri', desc: 'Seturi de foc demne de cap de afiș, pentru mulțimi și scene principale.' },
+            { title: 'Nunți', desc: 'Un moment de neuitat pentru primul dans sau pentru petrecere.' },
+            { title: 'Corporate', desc: 'Lansări de brand, gale și momente spectaculoase pentru conferințe.' },
+            { title: 'Cluburi de Noapte', desc: 'Foc și LED go-go plin de energie pentru ringul de dans.' },
+            { title: 'Petreceri Private', desc: 'Spectacol intim, de aproape, pentru orice ocazie.' },
+            { title: 'Activări de Brand', desc: 'Numere tematice personalizate, gândite să fie filmate și distribuite.' }
+          ]
+        },
+        testimonials: {
+          kicker: 'Testimoniale',
+          h2: 'Sala își amintește.',
+          items: [
+            { quote: 'Un moment de senzație absolut. Toată mulțimea s-a oprit și a privit. Impecabil și de neuitat.', name: 'Andrei P.', role: 'Director de Festival' },
+            { quote: 'Profesionist de la primul email până la ultima reverență. Spectacolul de foc a fost punctul culminant al serii.', name: 'Ioana M.', role: 'Organizator de Evenimente' },
+            { quote: 'Cinema pur. Invitații noștri încă vorbesc despre el și după săptămâni.', name: 'Raluca D.', role: 'Gazdă Privată' }
+          ]
+        },
+        contact: {
+          kicker: 'Rezervări',
+          h2: 'Hai să aprindem noaptea.',
+          lead: 'Spune-mi despre evenimentul tău și îți răspund în 48 de ore cu disponibilitatea și o ofertă personalizată.',
+          emailPlaceholder: 'contact@seperformancearts.com',
+          name: 'Nume', namePh: 'Numele tău',
+          email: 'Email', emailPh: 'tu@email.com',
+          eventType: 'Tip eveniment', select: 'Alege…',
+          date: 'Data', datePh: 'Alege data…', today: 'Astăzi', clear: 'Șterge',
+          prevMonth: 'Luna anterioară', nextMonth: 'Luna următoare',
+          months: ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'],
+          weekdays: ['Lu','Ma','Mi','Jo','Vi','Sâ','Du'],
+          message: 'Mesaj', messagePh: 'Spune-mi despre evenimentul tău: locație, public, program…',
+          submit: 'Trimite cererea de rezervare',
+          successTitle: 'Cerere primită.',
+          successText: 'Mulțumesc, te voi contacta în 48 de ore.'
+        },
+        eventTypes: ['Festival', 'Nuntă', 'Eveniment corporate', 'Club de noapte', 'Petrecere privată', 'Activare de brand', 'Altele'],
+        footer: {
+          desc: 'Jonglerie profesională cu foc și spectacole flow. Disponibil oriunde în lume pentru festivaluri, evenimente și rezervări private.',
+          explore: 'Explorează',
+          connect: 'Conectează-te',
+          emailPlaceholder: 'contact@seperformancearts.com',
+          rights: '© 2026 Stefan Ecliserescu Performance Arts. Toate drepturile rezervate.'
+        }
+      },
+      en: {
+        tagline: 'Light. Motion. Spectacle.',
+        book: 'Book a performance',
+        menu: 'Menu',
+        langLabel: 'Language',
+        openMenu: 'Open menu',
+        closeMenu: 'Close menu',
+        scroll: 'Scroll',
+        scrollAria: 'Scroll to content',
+        nav: { about: 'About', acts: 'Acts', gallery: 'Gallery', events: 'Events', contact: 'Contact' },
+        about: {
+          kicker: 'About',
+          h2: 'Fire, motion and precision, built for the stage.',
+          imgAlt: 'Stefan Ecliserescu performing with fire on stage',
+          p1: 'Stefan Ecliserescu is a performance artist specializing in fire and object manipulation: fire juggling and flow arts staged as a cinematic, high-impact spectacle. Each act is choreographed to command the room, from intimate private events to the festival main stage.',
+          p2: 'With years of stage experience, Stefan brings a safe, professional and spectacular performance to every event, available to travel nationally and internationally.'
+        },
+        acts: {
+          kicker: 'Acts & Services',
+          h2: 'Performances built to your room.',
+          items: [
+            { no: '01', title: 'Fire Juggling', desc: 'Clubs, torches and knives in controlled, high-speed sequences: pure precision and nerve.' },
+            { no: '02', title: 'Fire Show', desc: 'A fully choreographed set staged to music. Built for the main stage and the big moment.' },
+            { no: '03', title: 'Flow / LED Show', desc: 'Glow, poi and programmable LED visuals: a flame-free spectacle for indoor venues.' },
+            { no: '04', title: 'Stage & Events', desc: 'Custom routines scaled to your space, brief and audience, from intimate to arena.' }
+          ]
+        },
+        gallery: {
+          kicker: 'Gallery',
+          h2: 'Light, captured.',
+          more: 'See more on Instagram →',
+          labels: [
+            'Giant bubble performance in the park',
+            'Fire eating under the night sky',
+            'Sparks flying during a fire show',
+            'Duo fire performance for a street crowd'
+          ]
+        },
+        events: {
+          kicker: 'Events',
+          h2: 'Made for the moments that matter.',
+          items: [
+            { title: 'Festivals', desc: 'Headline-ready fire sets for crowds and main stages.' },
+            { title: 'Weddings', desc: 'A breathtaking first-dance or send-off moment.' },
+            { title: 'Corporate', desc: 'Brand launches, galas and conference showpieces.' },
+            { title: 'Nightclubs', desc: 'High-energy go-go fire and LED for the floor.' },
+            { title: 'Private Parties', desc: 'Intimate, close-up performance for any occasion.' },
+            { title: 'Brand Activations', desc: 'Custom themed acts that get filmed and shared.' }
+          ]
+        },
+        testimonials: {
+          kicker: 'Testimonials',
+          h2: 'The room remembers.',
+          items: [
+            { quote: 'An absolute showstopper. The whole crowd stopped and stared. Flawless and unforgettable.', name: 'Andrei P.', role: 'Festival Director' },
+            { quote: 'Professional from first email to final bow. The fire show was the highlight of our night.', name: 'Ioana M.', role: 'Event Planner' },
+            { quote: 'Pure cinema. Our guests are still talking about it weeks later.', name: 'Raluca D.', role: 'Private Host' }
+          ]
+        },
+        contact: {
+          kicker: 'Booking',
+          h2: "Let's set the night on fire.",
+          lead: "Tell me about your event and I'll get back within 48 hours with availability and a tailored quote.",
+          emailPlaceholder: 'contact@seperformancearts.com',
+          name: 'Name', namePh: 'Your name',
+          email: 'Email', emailPh: 'you@email.com',
+          eventType: 'Event type', select: 'Select…',
+          date: 'Date', datePh: 'Pick a date…', today: 'Today', clear: 'Clear',
+          prevMonth: 'Previous month', nextMonth: 'Next month',
+          months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+          weekdays: ['Mo','Tu','We','Th','Fr','Sa','Su'],
+          message: 'Message', messagePh: 'Tell me about your event: venue, audience, timing…',
+          submit: 'Send booking request',
+          successTitle: 'Request received.',
+          successText: "Thank you, I'll be in touch within 48 hours."
+        },
+        eventTypes: ['Festival', 'Wedding', 'Corporate event', 'Nightclub', 'Private party', 'Brand activation', 'Other'],
+        footer: {
+          desc: 'Professional fire juggling & flow performance. Available worldwide for festivals, events and private bookings.',
+          explore: 'Explore',
+          connect: 'Connect',
+          emailPlaceholder: 'contact@seperformancearts.com',
+          rights: '© 2026 Stefan Ecliserescu Performance Arts. All rights reserved.'
+        }
+      }
+    };
+
+    this._onScroll = this._onScroll.bind(this);
+    this._onResize = this._onResize.bind(this);
+  }
+
+  componentDidMount(){
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize);
+    // close the datepicker on outside click / Escape (added before any reduced-motion early return)
+    this._onDocPointer = (e) => {
+      if (!this.state.dateOpen) return;
+      if (e.target && e.target.closest && e.target.closest('.dp-wrap')) return;
+      this.setState({ dateOpen: false });
+    };
+    this._onDocKey = (e) => { if (e.key === 'Escape' && this.state.dateOpen) this.setState({ dateOpen: false }); };
+    document.addEventListener('mousedown', this._onDocPointer);
+    document.addEventListener('keydown', this._onDocKey);
+    this._onScroll();
+    // Seamless hero loop: a single native-looping video. The clip is a ping-pong
+    // (start frame ≈ end frame) so the wrap-around is imperceptible - no fade.
+    const stage = document.getElementById('hero-video');
+    const video = stage ? stage.querySelector('.hero-layer') : null;
+    if (video) {
+      // React/SSR can drop the muted attribute; set as a property so muted autoplay isn't blocked
+      video.muted = true; video.defaultMuted = true; video.setAttribute('muted', '');
+      video.loop = true;
+      const play = () => { const p = video.play(); if (p && p.catch) p.catch(() => {}); };
+      video.addEventListener('canplay', play, { once: true });
+      video.addEventListener('loadeddata', play, { once: true });
+      play();
+    }
+    if (this.reduce) {
+      // respect reduced-motion for scroll/parallax effects, but leave the ambient hero loop running
+      return;
+    }
+    // ---- Momentum smooth-scroll (Lenis): premium inertial glide on wheel; native momentum stays on touch ----
+    this._initLenis = () => {
+      if (this.lenis || typeof window === 'undefined' || !window.Lenis) return;
+      this.lenis = new window.Lenis({
+        lerp: 0.085,            // lower = longer, silkier glide after you stop scrolling
+        wheelMultiplier: 1,
+        smoothWheel: true,
+        syncTouch: false,       // keep native iOS/Android momentum - it already feels right
+        touchMultiplier: 1.5
+      });
+      const raf = (time) => { if (this.lenis) { this.lenis.raf(time); this._rafId = requestAnimationFrame(raf); } };
+      this._rafId = requestAnimationFrame(raf);
+    };
+    if (window.Lenis) this._initLenis();
+    else window.addEventListener('load', this._initLenis, { once: true });
+    // Smooth, offset-aware anchor navigation routed through Lenis
+    this._onAnchor = (e) => {
+      const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      const id = a.getAttribute('href');
+      if (!id || id === '#') return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      if (this.lenis) { this.lenis.start(); this.lenis.scrollTo(el, { offset: -72, duration: 1.3 }); }
+      else el.scrollIntoView({ behavior: this.reduce ? 'auto' : 'smooth' });
+    };
+    document.addEventListener('click', this._onAnchor);
+    // scroll-reveal
+    document.body.classList.add('reveal-ready');
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); this._io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => this._io.observe(el));
+    // safety: never leave content hidden
+    this._safety = setTimeout(() => {
+      document.querySelectorAll('[data-reveal]:not(.in)').forEach(el => el.classList.add('in'));
+    }, 3500);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._onDocPointer) document.removeEventListener('mousedown', this._onDocPointer);
+    if (this._onDocKey) document.removeEventListener('keydown', this._onDocKey);
+    if (this._initLenis) window.removeEventListener('load', this._initLenis);
+    if (this._onAnchor) document.removeEventListener('click', this._onAnchor);
+    if (this._rafId) cancelAnimationFrame(this._rafId);
+    if (this.lenis) { this.lenis.destroy(); this.lenis = null; }
+    if (this._io) this._io.disconnect();
+    if (this._safety) clearTimeout(this._safety);
+  }
+
+  _onScroll(){
+    const y = window.scrollY || window.pageYOffset;
+    document.body.classList.toggle('nav-solid', y > 40);
+    // burning-fuse progress bar
+    const fuse = document.getElementById('scroll-fuse');
+    if (fuse) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      fuse.style.width = (max > 0 ? Math.min(1, y / max) * 100 : 0) + '%';
+    }
+    if (!this.reduce && (this.props.parallaxHero ?? true)) {
+      const c = document.getElementById('hero-content');
+      const v = document.getElementById('hero-video');
+      if (y < window.innerHeight) {
+        if (c) c.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+        if (c) c.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.75)));
+        if (v) v.style.transform = 'scale(' + (1 + y / window.innerHeight * 0.12) + ')';
+      }
+    }
+  }
+
+  _onResize(){
+    const m = window.innerWidth < 860;
+    if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: m ? this.state.menuOpen : false });
+  }
+
+  _embers(count, key){
+    if (!(this.props.ambientEmbers ?? true) || this.reduce) return null;
+    const spans = [];
+    for (let i = 0; i < count; i++){
+      const left = Math.round((i / count) * 100 + (Math.sin(i * 12.9) * 6)) ;
+      const size = 2 + (i % 4);
+      const dur = 7 + (i % 6) * 1.6;
+      const delay = -(i * 0.9) % dur;
+      const dx = (i % 2 ? 1 : -1) * (20 + (i % 5) * 14);
+      spans.push(React.createElement('span', {
+        key: 'e' + key + i,
+        'aria-hidden': 'true',
+        style: {
+          position: 'absolute',
+          bottom: '-10px',
+          left: left + '%',
+          width: size + 'px',
+          height: size + 'px',
+          borderRadius: '50%',
+          background: i % 3 === 0 ? '#ffce5a' : '#ff5a1f',
+          boxShadow: '0 0 8px ' + (i % 3 === 0 ? '#ffce5a' : '#ff5a1f'),
+          '--dx': dx + 'px',
+          animation: 'emberRise ' + dur + 's linear ' + delay + 's infinite'
+        }
+      }));
+    }
+    return React.createElement(React.Fragment, null, spans);
+  }
+
+  // ---- datepicker helpers ----
+  _iso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+
+  // Monday-first month grid: leading blanks, then one cell per day.
+  _buildCalendar(year, month){
+    const offset = (new Date(year, month, 1).getDay() + 6) % 7;   // 0=Mon … 6=Sun
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const cells = [];
+    for (let i = 0; i < offset; i++) cells.push({ empty: true });
+    for (let d = 1; d <= daysInMonth; d++){
+      cells.push({ empty: false, day: String(d), iso: this._iso(new Date(year, month, d)) });
+    }
+    return cells;
+  }
+
+  _selectDate(iso){ this.setState({ selectedDate: iso, dateOpen: false }); }
+
+  renderVals(){
+    const lang = this.state.lang === 'en' ? 'en' : 'ro';
+    const t = this.content[lang];
+
+    const navLinks = [
+      { label: t.nav.about,   href: '#about' },
+      { label: t.nav.acts,    href: '#acts' },
+      { label: t.nav.gallery, href: '#gallery' },
+      { label: t.nav.events,  href: '#events' },
+      { label: t.nav.contact, href: '#contact' }
+    ];
+
+    // merge static gallery media with the localized alt-text labels
+    const gallery = this.galleryMeta.map((m, i) => ({ ...m, label: t.gallery.labels[i] }));
+
+    // language-selector active state (styling lives in style.css under .seg / .seg.is-active)
+    const isRo = lang === 'ro';
+    const isEn = lang === 'en';
+
+    // ---- datepicker view model ----
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const todayIso = this._iso(today);
+    const calYear = this.state.calYear;
+    const calMonth = this.state.calMonth;
+    const sel = this.state.selectedDate;
+    const calLabel = t.contact.months[calMonth] + ' ' + calYear;
+
+    const calDays = this._buildCalendar(calYear, calMonth).map(c => {
+      if (c.empty) return { empty: true, real: false };
+      const isPast = new Date(calYear, calMonth, parseInt(c.day, 10)) < today;
+      const isSel = sel === c.iso;
+      let cls = '';
+      if (isPast) cls += ' dp-muted';
+      if (c.iso === todayIso && !isSel) cls += ' dp-today';
+      if (isSel) cls += ' dp-sel';
+      return {
+        empty: false, real: true, day: c.day, cls: cls.trim(),
+        onClick: isPast ? () => {} : () => this._selectDate(c.iso)
+      };
+    });
+
+    // selected-date label (e.g. "15 Iunie 2026") or placeholder
+    let dateDisplay = t.contact.datePh, dateValueCls = 'dp-ph';
+    if (sel){
+      const p = sel.split('-');
+      dateDisplay = parseInt(p[2], 10) + ' ' + t.contact.months[parseInt(p[1], 10) - 1] + ' ' + p[0];
+      dateValueCls = '';
+    }
+    const shiftMonth = (delta) => this.setState(s => {
+      const d = new Date(s.calYear, s.calMonth + delta, 1);
+      return { calYear: d.getFullYear(), calMonth: d.getMonth() };
+    });
+
+    return {
+      t: t,
+      navLinks: navLinks,
+      acts: t.acts.items,
+      gallery: gallery,
+      occasions: t.events.items,
+      testimonials: t.testimonials.items,
+      eventTypes: t.eventTypes,
+
+      isMobile: this.state.isMobile,
+      notMobile: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+
+      // language selector
+      isRo: isRo,
+      isEn: isEn,
+      setRo: () => this.setState({ lang: 'ro' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      // active-state class fragment for the language buttons (shared by nav + mobile menu)
+      roBtnActive: isRo ? 'is-active' : '',
+      enBtnActive: isEn ? 'is-active' : '',
+
+      toggleMenu: () => this.setState(s => {
+        const open = !s.menuOpen;
+        if (this.lenis) { open ? this.lenis.stop() : this.lenis.start(); }
+        return { menuOpen: open };
+      }),
+      closeMenu: () => { if (this.lenis) this.lenis.start(); this.setState({ menuOpen: false }); },
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+
+      // datepicker
+      dateOpen: this.state.dateOpen,
+      dateOpenCls: this.state.dateOpen ? 'is-open' : '',
+      dateValueCls: dateValueCls,
+      dateDisplay: dateDisplay,
+      selectedDate: sel,
+      calLabel: calLabel,
+      weekdays: t.contact.weekdays,
+      calDays: calDays,
+      toggleDate: () => this.setState(s => ({ dateOpen: !s.dateOpen })),
+      calPrev: () => shiftMonth(-1),
+      calNext: () => shiftMonth(1),
+      calToday: () => this.setState({ calYear: today.getFullYear(), calMonth: today.getMonth(), selectedDate: todayIso, dateOpen: false }),
+      calClear: () => this.setState({ selectedDate: '', dateOpen: false }),
+
+      heroEmbers: this._embers(16, 'h'),
+      footerEmbers: this._embers(10, 'f')
+    };
+  }
+}
+</script>
+</body>
+</html>
